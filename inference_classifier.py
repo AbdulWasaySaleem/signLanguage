@@ -27,15 +27,14 @@ labels_dict = {
 
 # Main loop for video capture and processing
 while True:
-    ret, frame = cap.read()  # Capture a frame from the webcam
+    ret, frame = cap.read()
     if not ret or frame is None:
         print("Failed to capture a frame. Exiting loop.")
-        break  # Exit if frame capture fails
+        break  
 
     # Show the live feed
     cv2.imshow("Live Feed", frame)
 
-    # Check for keypresses
     key = cv2.waitKey(1) & 0xFF
     if key == ord("p"):  # When 'p' is pressed
         # Convert frame to RGB for MediaPipe
@@ -86,8 +85,7 @@ while True:
 
     # Exit when 'q' is pressed
     if key == ord("q"):
-        break  # Exit loop when 'q' is pressed
+        break  
 
-# Release resources and close OpenCV windows
 cap.release()
-cv2.destroyAllWindows()  # Close all OpenCV windows
+cv2.destroyAllWindows()  

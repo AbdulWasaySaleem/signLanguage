@@ -10,9 +10,9 @@ DATA_DIR = './Data'
 # Initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
-    static_image_mode=True,  # Use static mode for processing images
-    min_detection_confidence=0.5,  # Adjust based on data quality
-    max_num_hands=2  # Maximum number of hands to detect
+    static_image_mode=True,  
+    min_detection_confidence=0.5,  
+    max_num_hands=2  
 )
 
 # Create a list to store the data and labels
@@ -23,9 +23,7 @@ labels = []
 for subfolder in sorted(os.listdir(DATA_DIR)):
     subfolder_path = os.path.join(DATA_DIR, subfolder)
     
-    # Check if it's a valid directory
     if os.path.isdir(subfolder_path):
-        # Label for the current class
         label = subfolder  # Name of the subfolder is used as the label
         
         # Iterate through each image in the subfolder
@@ -35,11 +33,8 @@ for subfolder in sorted(os.listdir(DATA_DIR)):
             img = cv2.imread(img_path)
             
             if img is not None:
-                # Convert the image to RGB
-                img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-                
-                # Process the image with MediaPipe Hands
-                results = hands.process(img_rgb)
+                img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Convert the image to RGB
+                results = hands.process(img_rgb) # Process the image with MediaPipe Hands
                 
                 if results.multi_hand_landmarks:
                     for hand_landmarks in results.multi_hand_landmarks:

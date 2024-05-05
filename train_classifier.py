@@ -11,7 +11,7 @@ dataset = pickle.load(open('sign_language_dataset.pickle', 'rb'))
 data = np.asarray([item for item in dataset['data'] if len(item) == min(set(len(x) for x in dataset['data']))])
 labels = np.asarray([label for i, label in enumerate(dataset['labels']) if len(dataset['data'][i]) == len(data[0])])
 
-# Ensure all data has the same number of features
+
 assert all(len(x) == len(data[0]) for x in data), "Inconsistent feature counts in the data"
 
 # Split into training and testing sets
@@ -30,5 +30,5 @@ print('Classification Report:')
 print(classification_report(y_test, y_predict))
 
 # Save the trained model
-with open('trained_model2.pickle', 'wb') as f:
+with open('trained_model.pickle', 'wb') as f:
     pickle.dump({'model': model}, f)

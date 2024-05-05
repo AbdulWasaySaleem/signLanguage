@@ -15,10 +15,8 @@ for subcategory in subcategories:
     if not os.path.exists(subfolder_path):
         os.makedirs(subfolder_path)
 
-# Initialize the webcam
-cap = cv2.VideoCapture(0)  # Adjust the webcam ID if needed
 
-# Check if the webcam is working
+cap = cv2.VideoCapture(0)  #Initialize the webcam/Check if the webcam is working
 if not cap.isOpened():
     raise RuntimeError("Webcam not opened. Please check connections or permissions.")
 
@@ -68,9 +66,8 @@ while True:
             if capture_counter >= capture_limit:
                 capturing = False  # Stop capturing
                 current_category_index += 1  # Move to the next subcategory
-                break  # Exit the inner loop once the capture limit is reached
+                break  
 
-        # Display the webcam feed
         cv2.imshow("Webcam Feed", frame)
 
         # Check for key presses
@@ -79,10 +76,10 @@ while True:
             capturing = True  # Start capturing
 
         if key == ord("q"):
-            break  # Exit the outer loop to quit the script
+            break  
 
     if key == ord("q"):
-        break  # Exit the outer loop if 'q' is pressed
+        break  
 
 # Release the webcam and close OpenCV windows
 cap.release()
