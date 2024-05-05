@@ -15,11 +15,9 @@ for subcategory in subcategories:
     if not os.path.exists(subfolder_path):
         os.makedirs(subfolder_path)
 
-
 cap = cv2.VideoCapture(0)  #Initialize the webcam/Check if the webcam is working
 if not cap.isOpened():
     raise RuntimeError("Webcam not opened. Please check connections or permissions.")
-
 # Define capture parameters
 capture_limit = 100
 current_category_index = 0  # Index of the current subcategory
@@ -29,7 +27,6 @@ while True:
     if current_category_index >= len(subcategories):
         print("All categories have been captured. Exiting.")
         break
-
     # Display the instruction for the current subcategory
     subcategory = subcategories[current_category_index]
     print(f"Capturing images for '{subcategory}'.")
@@ -42,7 +39,6 @@ while True:
         ret, frame = cap.read()
         if not ret:
             break  # Exit if the frame capture fails
-
         # Display the instruction to start capturing
         cv2.putText(
             frame,
@@ -53,7 +49,6 @@ while True:
             (0, 255, 0),
             2,
         )
-
         # If capturing, save the images
         if capturing:
             subfolder_path = os.path.join(DATA_DIR, subcategory)
@@ -74,13 +69,10 @@ while True:
         key = cv2.waitKey(1) & 0xFF
         if key == ord("s"):
             capturing = True  # Start capturing
-
         if key == ord("q"):
             break  
-
     if key == ord("q"):
         break  
-
 # Release the webcam and close OpenCV windows
 cap.release()
 cv2.destroyAllWindows()
