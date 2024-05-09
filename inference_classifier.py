@@ -37,7 +37,7 @@ while True:
 
     key = cv2.waitKey(1) & 0xFF
     if key == ord("p"):  # When 'p' is pressed
-        # Convert frame to RGB for MediaPipe
+        # Convert frame to RGB for MediaPipe- real-time video stream
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         # Process the frame with MediaPipe Hands

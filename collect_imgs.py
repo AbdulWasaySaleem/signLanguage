@@ -15,12 +15,12 @@ for subcategory in subcategories:
     if not os.path.exists(subfolder_path):
         os.makedirs(subfolder_path)
 
-cap = cv2.VideoCapture(0)  #Initialize the webcam/Check if the webcam is working
+cap = cv2.VideoCapture(0) 
 if not cap.isOpened():
     raise RuntimeError("Webcam not opened. Please check connections or permissions.")
 # Define capture parameters
 capture_limit = 100
-current_category_index = 0  # Index of the current subcategory
+current_category_index = 0  
 
 while True:
     # Check if we've captured for all subcategories
